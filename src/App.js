@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from "./components/Header";
+import { Container, Table } from "reactstrap";
+import Students from "./components/Students";
+import { useState } from "react";
 
 function App() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [modalAction, setModalAction] = useState(null);
+  const [modal, setModal] = useState(false);
+  const [studentId, setStudentId] = useState(null);
+
+  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Students CRUD App</h1>
+      <Header
+        setModal={setModal}
+        setModalAction={setModalAction}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+      />
+      <Students
+        studentId={studentId}
+        modal={modal}
+        setModal={setModal}
+        modalAction={modalAction}
+        setModalAction={setModalAction}
+        searchQuery={searchQuery}
+        setStudentId={setStudentId}
+      />
+      <footer>Seytech LLC. All Rights Reserved.</footer>
     </div>
   );
 }
